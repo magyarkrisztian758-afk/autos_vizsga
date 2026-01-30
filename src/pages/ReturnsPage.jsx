@@ -19,19 +19,19 @@ function ReturnsPage() {
       </header>
 
       <main className="container" style={{ minHeight: '60vh', paddingTop: '40px' }}>
-        <h1>Visszaküldési Szabályzat</h1>
+        <h1 style={{ borderBottom: '2px solid #00c489', paddingBottom: '10px', marginBottom: '40px', display: 'flex', alignItems: 'center', gap: '10px' }}>📦 Visszaküldési Szabályzat</h1>
         
-        <section style={{ marginBottom: '40px' }}>
-          <h2>Általános Szabályok</h2>
-          <p>
+        <section style={{ marginBottom: '40px', padding: '20px', backgroundColor: '#151a21', borderRadius: '8px', borderLeft: '4px solid #2d7ef7' }}>
+          <h2 style={{ color: '#2d7ef7', marginTop: '0' }}>Általános Szabályok</h2>
+          <p style={{ color: '#cdd4dc' }}>
             Nálunk a vásárló elégedetsége az első. Ha nem vagy megelégedve a vásárlásaiddal, 
             az alábbi szabályok szerint tudsz termékeket visszaküldeni.
           </p>
         </section>
 
-        <section style={{ marginBottom: '40px' }}>
-          <h2>Visszaküldési Feltételek</h2>
-          <ul>
+        <section style={{ marginBottom: '40px', padding: '20px', backgroundColor: '#151a21', borderRadius: '8px', borderLeft: '4px solid #2d7ef7' }}>
+          <h2 style={{ color: '#2d7ef7', marginTop: '0' }}>Visszaküldési Feltételek</h2>
+          <ul style={{ color: '#cdd4dc', lineHeight: '1.8', paddingLeft: '1.5rem' }}>
             <li>A termékek 30 napon belül küldhetők vissza az eredeti csomagolásban</li>
             <li>A terméknek sérületlen és újnak kell maradnia</li>
             <li>A szállítási költség az ügyfél terhére esik</li>
@@ -39,9 +39,9 @@ function ReturnsPage() {
           </ul>
         </section>
 
-        <section style={{ marginBottom: '40px' }}>
-          <h2>Visszaküldési Folyamat</h2>
-          <ol>
+        <section style={{ marginBottom: '40px', padding: '20px', backgroundColor: '#151a21', borderRadius: '8px', borderLeft: '4px solid #2d7ef7' }}>
+          <h2 style={{ color: '#2d7ef7', marginTop: '0' }}>Visszaküldési Folyamat</h2>
+          <ol style={{ color: '#cdd4dc', lineHeight: '1.8', paddingLeft: '1.5rem' }}>
             <li>Kérj visszaküldési szelvényt az ügyfélszolgálattól</li>
             <li>Csomagold be a terméket az eredeti csomagolásban</li>
             <li>Küldd vissza a megadott címre a visszaküldési szelvénnyel</li>
@@ -49,15 +49,15 @@ function ReturnsPage() {
           </ol>
         </section>
 
-        <section style={{ marginBottom: '40px' }}>
-          <h2>Kapcsolat</h2>
-          <p>
+        <section style={{ marginBottom: '40px', padding: '20px', backgroundColor: '#151a21', borderRadius: '8px', borderLeft: '4px solid #2d7ef7' }}>
+          <h2 style={{ color: '#2d7ef7', marginTop: '0' }}>Kapcsolat</h2>
+          <p style={{ color: '#cdd4dc' }}>
             Kérdéseid vannak? Vedd fel a kapcsolatot az ügyfélszolgálatunkkal:
           </p>
-          <p>
-            <strong>Email:</strong> returns@carcore.hu<br />
-            <strong>Telefon:</strong> +36 1 234 5678<br />
-            <strong>Nyitvatartás:</strong> Hétfő - Péntek: 9:00 - 17:00
+          <p style={{ color: '#cdd4dc' }}>
+            <strong style={{ color: '#00c489' }}>Email:</strong> returns@carcore.hu<br />
+            <strong style={{ color: '#00c489' }}>Telefon:</strong> +36 1 234 5678<br />
+            <strong style={{ color: '#00c489' }}>Nyitvatartás:</strong> Hétfő - Péntek: 9:00 - 17:00
           </p>
           <Link to="/support" className="btn-primary" style={{ display: 'inline-block', marginTop: '10px' }}>
             Ügyfélszolgálat
