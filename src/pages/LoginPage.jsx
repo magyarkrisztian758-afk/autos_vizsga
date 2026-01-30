@@ -23,36 +23,64 @@ function LoginPage() {
     }
   }, [])
 
-  const handleLoginSubmit = (e) => {
+  const handleLoginSubmit = async (e) => {
     e.preventDefault()
     if (loginEmail && loginPassword) {
-      localStorage.setItem('user', JSON.stringify({
-        email: loginEmail,
-        loggedIn: true,
-        loginTime: new Date().toISOString()
-      }))
-      localStorage.setItem('showLoginSuccess', 'true')
-      navigate('/')
+      try {
+        const response = await fetch('http://localhost:3001/api/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: loginEmail, password: loginPassword })
+        })
+        const data = await response.json()
+        if (data.success) {
+          localStorage.setItem('user', JSON.stringify({
+            email: loginEmail,
+            loggedIn: true,
+            loginTime: new Date().toISOString()
+          }))
+          localStorage.setItem('showLoginSuccess', 'true')
+          navigate('/')
+        } else {
+          alert(data.message || 'Bejelentkezés sikertelen')
+        }
+      } catch (error) {
+        alert('Hiba történt a bejelentkezés során')
+      }
     } else {
       alert("Kérjük, töltse ki az összes mezőt!")
     }
   }
 
-  const handleRegisterSubmit = (e) => {
+  const handleRegisterSubmit = async (e) => {
     e.preventDefault()
     if (regPassword !== confirmPassword) {
       alert("A jelszavak nem egyeznek!")
       return
     }
     if (regEmail && birthDate && regPassword) {
-      localStorage.setItem('user', JSON.stringify({
-        email: regEmail,
-        birthDate: birthDate,
-        loggedIn: true,
-        registrationTime: new Date().toISOString()
-      }))
-      localStorage.setItem('showLoginSuccess', 'true')
-      navigate('/')
+      try {
+        const response = await fetch('http://localhost:3001/api/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: regEmail, birthDate, password: regPassword })
+        })
+        const data = await response.json()
+        if (data.success) {
+          localStorage.setItem('user', JSON.stringify({
+            email: regEmail,
+            birthDate: birthDate,
+            loggedIn: true,
+            registrationTime: new Date().toISOString()
+          }))
+          localStorage.setItem('showLoginSuccess', 'true')
+          navigate('/')
+        } else {
+          alert(data.message || 'Regisztráció sikertelen')
+        }
+      } catch (error) {
+        alert('Hiba történt a regisztráció során')
+      }
     } else {
       alert("Kérjük, töltse ki az összes mezőt!")
     }

@@ -21,7 +21,7 @@ function HomePage() {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const res = await fetch("/DATA/data.json")
+        const res = await fetch("http://localhost:3001/api/data")
         const data = await res.json()
         productsRef.current = Array.isArray(data) ? data : []
         setFilteredProducts(productsRef.current)

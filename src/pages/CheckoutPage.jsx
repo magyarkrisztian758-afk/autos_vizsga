@@ -95,7 +95,7 @@ function CheckoutPage() {
     setShowPickupOther(false)
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     if (!formData.name || !formData.email) {
       alert('Kérlek töltsd ki a nevet és e-mail címet.')
@@ -106,15 +106,30 @@ function CheckoutPage() {
     const shippingFee = SHIPPING_FEES[formData.shipping] || 0
     const total = subtotal + shippingFee
 
-    // Save order data
-    localStorage.setItem('orderData', JSON.stringify({
+    const orderData = {
       ...formData,
       total,
       cart,
       subtotal
-    }))
+    }
 
-    navigate('/order-preview')
+    try {
+      const response = await fetch('http://localhost:3001/api/order', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(orderData)
+      })
+      const data = await response.json()
+      if (data.success) {
+        // Save order data locally for preview
+        localStorage.setItem('orderData', JSON.stringify(orderData))
+        navigate('/order-preview')
+      } else {
+        alert('Hiba történt a rendelés leadásakor')
+      }
+    } catch (error) {
+      alert('Hiba történt a rendelés leadásakor')
+    }
   }
 
   const subtotal = cart.reduce((sum, item) => sum + item.price * item.qty, 0)
