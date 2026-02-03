@@ -13,6 +13,8 @@ function HomePage() {
   const [showLoginError, setShowLoginError] = useState(false)
   const [showLogoutSuccess, setShowLogoutSuccess] = useState(false)
   const [showLoginSuccess, setShowLoginSuccess] = useState(false)
+  const [brandOpen, setBrandOpen] = useState(false)
+  const [categoryOpen, setCategoryOpen] = useState(false)
   const productsRef = useRef([])
 
   const itemsPerPage = 9
@@ -230,27 +232,43 @@ function HomePage() {
               type="search" 
               placeholder="Keresés névre, márkára, OEM számra..." 
               value={filters.search}
-              onChange={(e) => setFilters({...filters, search: e.target.value})}
+              onChange={(e) => {
+                setFilters({...filters, search: e.target.value})
+                setBrandOpen(false)
+                setCategoryOpen(false)
+              }}
             />
-            <select 
-              id="brandFilter"
-              value={filters.brand}
-              onChange={(e) => setFilters({...filters, brand: e.target.value})}
-            >
-              <option value="">Márka</option>
-              {brands.map(b => <option key={b} value={b}>{b}</option>)}
-            </select>
-            <select 
-              id="categoryFilter"
-              value={filters.category}
-              onChange={(e) => setFilters({...filters, category: e.target.value})}
-            >
-              <option value="">Kategória</option>
-              {categories.map(c => <option key={c} value={c}>{c}</option>)}
-            </select>
+            <div className="filter-dropdown">
+              <button className="filter-btn" onClick={() => setBrandOpen(!brandOpen)}>
+                Márka{filters.brand ? ` (${filters.brand})` : ''}
+              </button>
+              {brandOpen && (
+                <div className="dropdown-content">
+                  <button onClick={() => { setFilters({...filters, brand: ''}); setBrandOpen(false) }}>Összes</button>
+                  {brands.map(b => (
+                    <button key={b} onClick={() => { setFilters({...filters, brand: b}); setBrandOpen(false) }}>{b}</button>
+                  ))}
+                </div>
+              )}
+            </div>
+            <div className="filter-dropdown">
+              <button className="filter-btn" onClick={() => setCategoryOpen(!categoryOpen)}>
+                Kategória{filters.category ? ` (${filters.category})` : ''}
+              </button>
+              {categoryOpen && (
+                <div className="dropdown-content">
+                  <button onClick={() => { setFilters({...filters, category: ''}); setCategoryOpen(false) }}>Összes</button>
+                  {categories.map(c => (
+                    <button key={c} onClick={() => { setFilters({...filters, category: c}); setCategoryOpen(false) }}>{c}</button>
+                  ))}
+                </div>
+              )}
+            </div>
             <button id="resetFilters" onClick={() => {
               setFilters({ search: '', brand: '', category: '' })
               setCurrentPage(1)
+              setBrandOpen(false)
+              setCategoryOpen(false)
             }}>Szűrők törlése</button>
           </div>
         </div>

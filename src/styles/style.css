@@ -279,6 +279,61 @@ main {
   }
 }
 
+/* Filter dropdowns */
+.filter-dropdown {
+  position: relative;
+}
+
+.filter-btn {
+  background: #10151c;
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filter-btn::after {
+  content: "▼";
+  font-size: 0.8em;
+  margin-left: 8px;
+}
+
+.dropdown-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #10151c;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-top: 4px;
+  z-index: 1000;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.dropdown-content button {
+  width: 100%;
+  padding: 8px 12px;
+  background: none;
+  border: none;
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+  border-radius: 0;
+}
+
+.dropdown-content button:hover {
+  background: var(--primary);
+  color: white;
+}
+
 /* ============================= */
 /* PRODUCT GRID & CARDS          */
 /* ============================= */

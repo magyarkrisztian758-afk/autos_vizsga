@@ -74,7 +74,7 @@
   {
     "id": "BP-0006",
     "name": "Kuplung készlet",
-    "brand": "LUK",
+    "brand": "LuK",
     "oem": "624317600",
     "compatible": [
       { "make": "Opel", "model": "Astra", "yearFrom": 2004, "yearTo": 2010 }
