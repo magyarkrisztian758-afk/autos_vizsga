@@ -8,6 +8,8 @@ import WarrantyPage from './pages/WarrantyPage'
 import ShippingPage from './pages/ShippingPage'
 import ReturnsPage from './pages/ReturnsPage'
 import SupportPage from './pages/SupportPage'
+import AdminPanel from './pages/AdminPanel'
+import OrderHistory from './pages/OrderHistory'
 import ScrollToTop from './components/ScrollToTop'
 
 function App() {
@@ -19,10 +21,12 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/order-preview" element={<OrderPreviewPage />} />
+        <Route path="/rendeléseim" element={<OrderHistory />} />
         <Route path="/garancia" element={<WarrantyPage />} />
         <Route path="/szallitas" element={<ShippingPage />} />
         <Route path="/visszakuldes" element={<ReturnsPage />} />
         <Route path="/support" element={<SupportPage />} />
+        <Route path="/admin" element={<AdminPanel />} />
       </Routes>
     </Router>
   )

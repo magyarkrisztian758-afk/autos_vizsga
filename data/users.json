@@ -1,0 +1,20 @@
+[
+  {
+    "email": "admin@example.com",
+    "birthDate": "1990-01-01",
+    "password": "admin123",
+    "role": "admin"
+  },
+  {
+    "email": "user1@example.com",
+    "birthDate": "1995-05-15",
+    "password": "user123",
+    "role": "user"
+  },
+  {
+    "email": "alexgithub1023@gmail.com",
+    "birthDate": "2006-10-23",
+    "password": "retzulok19",
+    "role": "user"
+  }
+]

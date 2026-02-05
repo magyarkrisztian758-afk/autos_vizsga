@@ -107,6 +107,7 @@ main {
   cursor: pointer;
   font-size: 1rem;
   transition: background 0.2s ease;
+  text-decoration: none;
 }
 
 .account-btn:hover {
@@ -118,6 +119,35 @@ main {
 }
 
 .account-text {
+  display: none;
+}
+
+.admin-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: 1px solid #667eea;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.admin-btn:hover {
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  border-color: white;
+}
+
+.admin-icon {
+  font-size: 1.2rem;
+}
+
+.admin-text {
   font-weight: 500;
 }
 

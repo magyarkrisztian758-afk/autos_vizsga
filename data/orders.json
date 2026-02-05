@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1770284634809,
+    "name": "Nagy Jani",
+    "phone": "+36 70 348 2997",
+    "email": "alexgithub1023@gmail.com",
+    "zip": "2254",
+    "city": "Szentmartonkata",
+    "address": "Szilvas utca 4.",
+    "shipping": "csomagpont",
+    "payment": "cod",
+    "pickup": "Debrecen — Piac utca",
+    "total": 10970,
+    "cart": [
+      {
+        "id": "BP-0002",
+        "name": "Olajszűrő",
+        "price": 3490,
+        "image": "IMAGES/olajszuro.jpg",
+        "stock": 34,
+        "qty": 3
+      }
+    ],
+    "subtotal": 10470,
+    "timestamp": "2026-02-05T09:43:54.809Z"
+  }
+]

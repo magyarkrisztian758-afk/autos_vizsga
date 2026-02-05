@@ -54,6 +54,8 @@ export function initializeLoginForm() {
         localStorage.setItem('user', JSON.stringify({
           email: email,
           loggedIn: true,
+          role: 'user',
+          isAdmin: false,
           loginTime: new Date().toISOString()
         }))
         localStorage.setItem('showLoginSuccess', 'true')

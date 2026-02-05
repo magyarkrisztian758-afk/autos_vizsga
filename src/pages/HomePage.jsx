@@ -10,6 +10,7 @@ function HomePage() {
   const [brands, setBrands] = useState([])
   const [categories, setCategories] = useState([])
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isAdmin, setIsAdmin] = useState(false)
   const [showLoginError, setShowLoginError] = useState(false)
   const [showLogoutSuccess, setShowLogoutSuccess] = useState(false)
   const [showLoginSuccess, setShowLoginSuccess] = useState(false)
@@ -60,6 +61,7 @@ function HomePage() {
             const userData = JSON.parse(user)
             if (userData.loggedIn) {
               setIsLoggedIn(true)
+              setIsAdmin(userData.isAdmin || false)
             }
           } catch (err) {
             console.error("Error parsing user data:", err)
@@ -178,6 +180,7 @@ function HomePage() {
   const handleLogout = () => {
     localStorage.removeItem('user')
     setIsLoggedIn(false)
+    setIsAdmin(false)
     setShowLogoutSuccess(true)
     setTimeout(() => setShowLogoutSuccess(false), 3000)
   }
@@ -199,19 +202,27 @@ function HomePage() {
             <h1><Link to="/">CarCore</Link></h1>
             <div className="header-right">
               {isLoggedIn ? (
-                <button className="account-btn" onClick={handleLogout} aria-label="Kijelentkezés">
-                  <span className="account-icon">🚪</span>
-                  <span className="account-text">Kijelentkezés</span>
-                </button>
-              ) : (
-                <button className="account-btn" aria-label="Fiók">
-                  <span className="account-icon">👤</span>
-                  <span className="account-text">
-                    <Link to="/login" style={{ color: 'inherit', textDecoration: 'none' }}>
-                      Bejelentkezés
+                <>
+                  {isAdmin && (
+                    <Link to="/admin" className="admin-btn" aria-label="Admin Panel">
+                      <span className="admin-icon">⚙️</span>
+                      <span className="admin-text">Admin</span>
                     </Link>
-                  </span>
-                </button>
+                  )}
+                  <Link to="/rendeléseim" className="account-btn" aria-label="Rendeléseim">
+                    <span className="account-icon">📦</span>
+                    <span className="account-text">Rendeléseim</span>
+                  </Link>
+                  <button className="account-btn" onClick={handleLogout} aria-label="Kijelentkezés">
+                    <span className="account-icon">🚪</span>
+                    <span className="account-text">Kijelentkezés</span>
+                  </button>
+                </>
+              ) : (
+                <Link to="/login" className="account-btn" aria-label="Fiók">
+                  <span className="account-icon">👤</span>
+                  <span className="account-text">Bejelentkezés</span>
+                </Link>
               )}
               <button id="cartButton" className="cart-btn" aria-label="Kosár" onClick={() => setCartOpen(!cartOpen)}>
                 Kosár (<span id="cartCount">{cartCount}</span>)

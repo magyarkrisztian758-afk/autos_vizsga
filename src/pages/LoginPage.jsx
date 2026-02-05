@@ -33,18 +33,26 @@ function LoginPage() {
           body: JSON.stringify({ email: loginEmail, password: loginPassword })
         })
         const data = await response.json()
+        console.log('Login response:', data)
         if (data.success) {
-          localStorage.setItem('user', JSON.stringify({
+          const userData = {
             email: loginEmail,
             loggedIn: true,
+            role: data.user.role || 'user',
+            isAdmin: data.user.isAdmin || false,
             loginTime: new Date().toISOString()
-          }))
+          }
+          console.log('Storing user:', userData)
+          localStorage.setItem('user', JSON.stringify(userData))
           localStorage.setItem('showLoginSuccess', 'true')
-          navigate('/')
+          // Ha admin, akkor admin panel-re, ha nem akkor home-ra
+          console.log('Is admin?', data.user.isAdmin)
+          navigate(data.user.isAdmin ? '/admin' : '/')
         } else {
           alert(data.message || 'Bejelentkezés sikertelen')
         }
       } catch (error) {
+        console.error('Login error:', error)
         alert('Hiba történt a bejelentkezés során')
       }
     } else {
