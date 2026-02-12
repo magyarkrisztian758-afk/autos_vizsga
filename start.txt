@@ -1,0 +1,3 @@
+npm run dev-all
+
+Elindítja a Frontendet és a Backendet is

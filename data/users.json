@@ -16,5 +16,11 @@
     "birthDate": "2006-10-23",
     "password": "retzulok19",
     "role": "user"
+  },
+  {
+    "email": "magyarkrisztian758@gmail.com",
+    "birthDate": "2007-01-24",
+    "password": "Krisztian758",
+    "role": "user"
   }
 ]
